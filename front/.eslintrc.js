@@ -1,13 +1,25 @@
+// "eslintConfig": {
+//     "root": true,
+//     "env": {
+//       "node": true
+//     },
+//     "extends": [
+//       "plugin:vue/vue3-essential",
+//       "eslint:recommended"
+//     ],
+//     "parserOptions": {
+//       "parser": "babel-eslint"
+//     },
+//     "rules": {}
+// },
+
+
 module.exports = {
     extends: [
-      'plugin:vue/recommended'
+        'plugin:vue/vue3-essential',
+        'eslint:recommended'
     ],
-    plugins: [
-      'vuetify'
-    ],
-    rules: {
-      'vuetify/no-deprecated-classes': 'error',
-      'vuetify/no-legacy-grid': 'error',
-      'indent': ["error", 2]
-    }
+    parserOptions: {
+        "parser": "babel-eslint"
+    },
 }
