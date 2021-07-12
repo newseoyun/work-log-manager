@@ -1,15 +1,17 @@
 spring:
   datasource:
-    url: jdbc:h2:file:D:/workspace/localdb/h2db
+    url: jdbc:h2:tcp://localhost/~/h2db/worklog
     driver-class-name: org.h2.Driver
     username: sa
-    password:
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:db/schema.sql
-      data-locations: classpath:db/data.sql
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    password: sa
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+
+logging.level:
+    org.hibernate.SQL: debug
