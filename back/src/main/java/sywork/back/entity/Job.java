@@ -1,9 +1,8 @@
 package sywork.back.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import sywork.back.controller.JobForm;
+import sywork.back.controller.WorkBoardForm;
 
 import javax.persistence.*;
 
@@ -16,6 +15,8 @@ import javax.persistence.*;
         initialValue = 1,
         allocationSize = 1
 )
+@Builder
+@AllArgsConstructor
 public class Job extends BaseTimeEntity {
 
     @Id
@@ -25,12 +26,13 @@ public class Job extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "work_board_id")
     private WorkBoard workBoard;
+    private String jobType;
     private String category;
     private String categorySub;
-    private String jobType;
     private int jobCount;
     private String memo;
 
+    // 테스트용
     public Job(WorkBoard workBoard, String category) {
         this.workBoard = workBoard;
         this.category = category;

@@ -3,7 +3,6 @@ package sywork.back.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +15,8 @@ import java.util.List;
         initialValue = 1,
         allocationSize = 1
 )
+@Builder
+@AllArgsConstructor
 public class WorkBoard extends BaseTimeEntity {
 
     @Id
@@ -40,4 +41,5 @@ public class WorkBoard extends BaseTimeEntity {
         this.title = title;
         this.memo = memo;
     }
+
 }
