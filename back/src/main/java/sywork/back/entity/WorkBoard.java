@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -18,13 +20,17 @@ public class WorkBoard extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "WORK_BOARD_SEQ_GENERATOR")
-    private int id;
+    private Long id;
+    private String acceptType;
+    private String ticketNum;
+    private String title;
     private String endDate;
     private String dueDate;
-    private String ticketNum;
     private double md;
-    private String title;
     private String memo;
+
+    @OneToMany(mappedBy = "workBoard")
+    private List<Job> jobs = new ArrayList<>();
 
     public WorkBoard(String endDate, String dueDate, String ticketNum, double md, String title, String memo) {
         this.endDate = endDate;
