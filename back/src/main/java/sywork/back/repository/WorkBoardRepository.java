@@ -5,5 +5,4 @@ import sywork.back.entity.WorkBoard;
 
 public interface WorkBoardRepository extends JpaRepository<WorkBoard, Integer> {
 
-
 }
