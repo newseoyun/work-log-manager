@@ -17,7 +17,7 @@ public class WorkBoardService {
     public Long post(WorkBoardForm workBoardForm) {
         WorkBoard workBoard = WorkBoard.builder()
                 .acceptType(workBoardForm.getAcceptType())
-                .ticketNum(workBoardForm.getTicketNum())
+                .ticketNum(workBoardForm.getTicketNumber())
                 .title(workBoardForm.getTitle())
                 .endDate(workBoardForm.getEndDate())
                 .dueDate(workBoardForm.getDueDate())

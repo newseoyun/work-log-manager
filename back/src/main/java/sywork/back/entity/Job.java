@@ -1,8 +1,6 @@
 package sywork.back.entity;
 
 import lombok.*;
-import sywork.back.controller.JobForm;
-import sywork.back.controller.WorkBoardForm;
 
 import javax.persistence.*;
 
@@ -29,8 +27,9 @@ public class Job extends BaseTimeEntity {
     private String jobType;
     private String category;
     private String categorySub;
-    private int jobCount;
+    private Integer jobCount;
     private String memo;
+    private Integer order;
 
     // 테스트용
     public Job(WorkBoard workBoard, String category) {

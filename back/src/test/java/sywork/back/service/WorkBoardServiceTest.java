@@ -27,7 +27,7 @@ class WorkBoardServiceTest {
     JobRepository jobRepository;
 
     @Test
-    void postTest() {
+    void 등록하기() {
 
         WorkBoardForm workBoardForm = WorkBoardForm.builder()
                 .acceptType("티켓")
