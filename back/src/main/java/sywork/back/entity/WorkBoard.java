@@ -17,6 +17,7 @@ import java.util.List;
 )
 @Builder
 @AllArgsConstructor
+@ToString(exclude = {"jobs"})
 public class WorkBoard extends BaseTimeEntity {
 
     @Id

@@ -87,5 +87,29 @@ class WorkBoardServiceTest {
 
     }
 
+    @Test
+    @Rollback(value = false)
+    void updateTest() {
+
+        WorkBoardForm workBoardForm = WorkBoardForm.builder()
+                .workBoardId(6L)
+                .acceptType("티켓")
+                .ticketNum("a")
+                .title("hihi")
+                .endDate("20210715")
+                .dueDate("20210715")
+                .md(0.2)
+                .memo("hihi")
+                .build();
+
+        workBoardService.updateBoard(workBoardForm);
+
+        List<WorkBoard> boardList = workBoardService.getList();
+        for (WorkBoard workBoard : boardList) {
+            System.out.println("workBoard.toString() = " + workBoard.toString());
+        }
+
+    }
+
 
 }
