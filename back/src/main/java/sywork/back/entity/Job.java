@@ -1,6 +1,7 @@
 package sywork.back.entity;
 
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -29,11 +30,15 @@ public class Job extends BaseTimeEntity {
     private String categorySub;
     private Integer jobCount;
     private String memo;
-    private Integer order;
+    private Integer ord;
 
     // 테스트용
     public Job(WorkBoard workBoard, String category) {
         this.workBoard = workBoard;
         this.category = category;
+    }
+
+    public Job(WorkBoard workBoard) {
+        this.workBoard = workBoard;
     }
 }

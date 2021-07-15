@@ -3,6 +3,7 @@ package sywork.back.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import sywork.back.controller.JobForm;
 import sywork.back.controller.WorkBoardForm;
 import sywork.back.entity.Job;
@@ -26,6 +27,9 @@ class WorkBoardServiceTest {
     @Autowired
     JobRepository jobRepository;
 
+    @Autowired
+    WorkBoardService workBoardService;
+
     @Test
     void 등록하기() {
 
@@ -44,9 +48,9 @@ class WorkBoardServiceTest {
         JobForm jobForm = JobForm.builder()
                 .jobType("빌링통계")
                 .build();
+        Job job1 = Job.builder().jobType(jobForm.getJobType()).workBoard(savedWork).build();
         Job job2 = Job.builder().jobType(jobForm.getJobType()).workBoard(savedWork).build();
         Job job3 = Job.builder().jobType(jobForm.getJobType()).workBoard(savedWork).build();
-        Job job1 = Job.builder().jobType(jobForm.getJobType()).workBoard(savedWork).build();
 
         List<Job> jobs = new ArrayList<>();
         jobs.add(job1);
@@ -59,6 +63,27 @@ class WorkBoardServiceTest {
             System.out.println("saved job id = " + job.getJobId());
             System.out.println("saved job workBoardId = " + job.getWorkBoard().getId());
         }
+    }
+
+    @Test
+    void postTest() {
+
+        JobForm jobForm1 = JobForm.builder().jobType("빌링통계").build();
+        JobForm jobForm2 = JobForm.builder().jobType("빌링통계").build();
+        JobForm jobForm3 = JobForm.builder().jobType("빌링통계").build();
+
+        List<JobForm> jobForms = new ArrayList<>();
+        jobForms.add(jobForm1);
+        jobForms.add(jobForm2);
+        jobForms.add(jobForm3);
+
+        WorkBoardForm workBoardForm = WorkBoardForm.builder()
+                .title("테스트")
+                .jobs(jobForms)
+                .build();
+
+        Long boardId = workBoardService.post(workBoardForm);
+        System.out.println("boardId = " + boardId);
 
     }
 
