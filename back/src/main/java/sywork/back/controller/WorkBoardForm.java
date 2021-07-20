@@ -1,12 +1,13 @@
 package sywork.back.controller;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.lang.Nullable;
 
 import java.util.List;
 
-@Getter @Setter @Builder
+@Getter @Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class WorkBoardForm {
 
     private Long workBoardId;
@@ -17,6 +18,7 @@ public class WorkBoardForm {
     private String dueDate;
     private double md;
     private String memo;
-    public List<JobForm> jobs;
+    @Nullable
+    private List<JobForm> jobs;
 
 }

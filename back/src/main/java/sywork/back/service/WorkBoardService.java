@@ -37,20 +37,21 @@ public class WorkBoardService {
 
         List<JobForm> jobForms = workBoardForm.getJobs();
 
-        for (JobForm jobForm : jobForms) {
-            Job job = Job.builder()
-                    .workBoard(savedWork)
-                    .jobType(jobForm.getJobType())
-                    .category(jobForm.getCategory())
-                    .categorySub(jobForm.getCategorySub())
-                    .jobCount(jobForm.getJobCount())
-                    .memo(jobForm.getMemo())
-                    .ord(jobForm.getOrd())
-                    .build();
+        if (jobForms != null) {
+            for (JobForm jobForm : jobForms) {
+                Job job = Job.builder()
+                        .workBoard(savedWork)
+                        .jobType(jobForm.getJobType())
+                        .category(jobForm.getCategory())
+                        .categorySub(jobForm.getCategorySub())
+                        .jobCount(jobForm.getJobCount())
+                        .memo(jobForm.getMemo())
+                        .ord(jobForm.getOrd())
+                        .build();
 
-            jobRepository.save(job);
+                jobRepository.save(job);
+            }
         }
-
         return savedWork.getId();
     }
 
