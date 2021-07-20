@@ -1,5 +1,8 @@
 package sywork.back.service;
 
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +17,7 @@ import sywork.back.repository.WorkBoardRepository;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -89,24 +93,37 @@ class WorkBoardServiceTest {
 
     @Test
     @Rollback(value = false)
-    void updateTest() {
+    void 수정하기() {
+        WorkBoard workBoard = WorkBoard.builder()
+                .acceptType("티켓")
+                .title("테스트")
+                .endDate("20210101")
+                .dueDate("20210101")
+                .memo("test")
+                .md(0.2)
+                .build();
+
+        workBoardRepository.save(workBoard);
 
         WorkBoardForm workBoardForm = WorkBoardForm.builder()
-                .workBoardId(6L)
+                .workBoardId(1L)
                 .acceptType("티켓")
                 .ticketNum("a")
                 .title("hihi")
                 .endDate("20210715")
                 .dueDate("20210715")
-                .md(0.2)
                 .memo("hihi")
                 .build();
 
         workBoardService.updateBoard(workBoardForm);
 
+        WorkBoard getOne = workBoardService.getOne(1L).get();
+
+        Assertions.assertThat(getOne.getTitle()).isEqualTo("hihi");
+
         List<WorkBoard> boardList = workBoardService.getList();
-        for (WorkBoard workBoard : boardList) {
-            System.out.println("workBoard.toString() = " + workBoard.toString());
+        for (WorkBoard board : boardList) {
+            System.out.println("workBoard.toString() = " + board.toString());
         }
 
     }

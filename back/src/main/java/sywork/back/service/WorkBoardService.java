@@ -63,15 +63,15 @@ public class WorkBoardService {
     }
 
     public void updateBoard(WorkBoardForm workBoardForm) {
-        Optional<WorkBoard> board = workBoardRepository.findById(workBoardForm.getWorkBoardId());
+        WorkBoard workBoard = workBoardRepository.findById(workBoardForm.getWorkBoardId()).get();
 
-        board.get().setAcceptType(workBoardForm.getAcceptType());
-        board.get().setTicketNum(workBoardForm.getTicketNum());
-        board.get().setTitle(workBoardForm.getTitle());
-        board.get().setEndDate(workBoardForm.getEndDate());
-        board.get().setDueDate(workBoardForm.getDueDate());
-        board.get().setMd(workBoardForm.getMd());
-        board.get().setMemo(workBoardForm.getMemo());
+        workBoard.setAcceptType(workBoardForm.getAcceptType());
+        workBoard.setTicketNum(workBoardForm.getTicketNum());
+        workBoard.setTitle(workBoardForm.getTitle());
+        workBoard.setEndDate(workBoardForm.getEndDate());
+        workBoard.setDueDate(workBoardForm.getDueDate());
+        workBoard.setMd(workBoardForm.getMd());
+        workBoard.setMemo(workBoardForm.getMemo());
 
     }
 

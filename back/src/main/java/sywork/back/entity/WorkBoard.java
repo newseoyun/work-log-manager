@@ -18,7 +18,7 @@ import java.util.List;
         allocationSize = 1
 )
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(exclude = {"jobs"})
 public class WorkBoard extends BaseTimeEntity {
 
@@ -32,12 +32,12 @@ public class WorkBoard extends BaseTimeEntity {
     private String dueDate;
     private double md;
     private String memo;
+    @ColumnDefault("'N'")
+    private String delYn;
 
     @OneToMany(mappedBy = "workBoard")
     private List<Job> jobs = new ArrayList<>();
 
-    @ColumnDefault("N")
-    private String delYn;
 
     public WorkBoard(String endDate, String dueDate, String ticketNum, double md, String title, String memo) {
         this.endDate = endDate;

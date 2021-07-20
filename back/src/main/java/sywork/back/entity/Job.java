@@ -15,7 +15,7 @@ import javax.persistence.*;
         allocationSize = 1
 )
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(exclude = {"workBoard"})
 public class Job extends BaseTimeEntity {
 
