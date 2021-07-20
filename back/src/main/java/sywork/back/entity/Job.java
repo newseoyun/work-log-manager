@@ -16,6 +16,7 @@ import javax.persistence.*;
 )
 @Builder
 @AllArgsConstructor
+@ToString(exclude = {"workBoard"})
 public class Job extends BaseTimeEntity {
 
     @Id

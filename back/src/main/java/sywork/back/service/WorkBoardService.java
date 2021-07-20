@@ -45,7 +45,7 @@ public class WorkBoardService {
                     .categorySub(jobForm.getCategorySub())
                     .jobCount(jobForm.getJobCount())
                     .memo(jobForm.getMemo())
-                    .ord(jobForm.getOrder())
+                    .ord(jobForm.getOrd())
                     .build();
 
             jobRepository.save(job);
@@ -62,7 +62,6 @@ public class WorkBoardService {
         return workBoardRepository.findById(boardId);
     }
 
-    @Transactional
     public void updateBoard(WorkBoardForm workBoardForm) {
         Optional<WorkBoard> board = workBoardRepository.findById(workBoardForm.getWorkBoardId());
 

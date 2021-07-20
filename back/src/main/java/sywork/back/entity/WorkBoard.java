@@ -1,6 +1,8 @@
 package sywork.back.entity;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -33,6 +35,9 @@ public class WorkBoard extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "workBoard")
     private List<Job> jobs = new ArrayList<>();
+
+    @ColumnDefault("N")
+    private String delYn;
 
     public WorkBoard(String endDate, String dueDate, String ticketNum, double md, String title, String memo) {
         this.endDate = endDate;
