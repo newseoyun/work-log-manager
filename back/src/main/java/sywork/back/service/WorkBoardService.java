@@ -63,8 +63,9 @@ public class WorkBoardService {
         return workBoardRepository.findById(boardId);
     }
 
-    public void updateBoard(WorkBoardForm workBoardForm) {
-        WorkBoard workBoard = workBoardRepository.findById(workBoardForm.getWorkBoardId()).get();
+    @Transactional
+    public void updateBoard(Long workId, WorkBoardForm workBoardForm) {
+        WorkBoard workBoard = workBoardRepository.findById(workId).get();
 
         workBoard.setAcceptType(workBoardForm.getAcceptType());
         workBoard.setTicketNum(workBoardForm.getTicketNum());

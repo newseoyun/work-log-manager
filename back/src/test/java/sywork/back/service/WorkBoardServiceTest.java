@@ -115,7 +115,7 @@ class WorkBoardServiceTest {
                 .memo("hihi")
                 .build();
 
-        workBoardService.updateBoard(workBoardForm);
+        workBoardService.updateBoard(workBoardForm.getWorkBoardId(), workBoardForm);
 
         WorkBoard getOne = workBoardService.getOne(1L).get();
 

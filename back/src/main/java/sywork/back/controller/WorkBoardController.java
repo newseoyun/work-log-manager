@@ -4,13 +4,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import sywork.back.dto.WorkBoardDto;
 import sywork.back.entity.WorkBoard;
 import sywork.back.repository.WorkBoardRepository;
 import sywork.back.service.WorkBoardService;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class WorkBoardController {
 
@@ -32,13 +34,11 @@ public class WorkBoardController {
                         ));
     }
 
-
     @GetMapping("/work/{workId}")
     @ResponseBody
     public WorkBoard getWork(@PathVariable Long workId) {
         return workBoardService.getOne(workId).get();
     }
-
 
     @PostMapping("/add")
     @ResponseBody
@@ -46,5 +46,10 @@ public class WorkBoardController {
         return workBoardService.post(workBoardForm);
     }
 
+    @PostMapping("/edit/{workId}")
+    public String edit(@PathVariable Long workId, @RequestBody WorkBoardForm workBoardForm) {
+        workBoardService.updateBoard(workId, workBoardForm);
+        return "redirect:/work/{workId}";
+    }
 
 }
