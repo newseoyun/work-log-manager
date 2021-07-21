@@ -1,28 +1,37 @@
 package sywork.back.controller;
 
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import sywork.back.dto.WorkBoardDto;
-import sywork.back.entity.Job;
 import sywork.back.entity.WorkBoard;
 import sywork.back.repository.WorkBoardRepository;
 import sywork.back.service.WorkBoardService;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class WorkBoardController {
 
     private final WorkBoardService workBoardService;
-/*
-    @GetMapping("/list/{page}")
+    private final WorkBoardRepository workBoardRepository;
+
+    @GetMapping("/list")
     @ResponseBody
-    public List<WorkBoard> list(@PathVariable int page) {
-        return workBoardService.getList(page); // dto, 페이징 처리 할 것
+    public Page<WorkBoardDto> list(@PageableDefault Pageable pageable) {
+        return workBoardRepository.findAll(pageable)
+                .map(m -> new WorkBoardDto(
+                        m.getId(),
+                        m.getAcceptType(),
+                        m.getTicketNum(),
+                        m.getTitle(),
+                        m.getEndDate(),
+                        m.getDueDate(),
+                        m.getMd()
+                        ));
     }
-*/
+
 
     @GetMapping("/work/{workId}")
     @ResponseBody

@@ -1,18 +1,20 @@
 package sywork.back.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter @Builder
+@AllArgsConstructor
 public class WorkBoardDto {
 
-    private int id;
+    private Long id;
+    private String acceptType;
+    private String ticketNum;
+    private String title;
     private String endDate;
     private String dueDate;
-    private String ticketNum;
-    private float md;
-    private String title;
-    private String memo;
+    private double md;
 
 }
