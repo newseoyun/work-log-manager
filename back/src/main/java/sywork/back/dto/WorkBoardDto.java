@@ -1,12 +1,8 @@
 package sywork.back.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter @Setter @Builder
-@AllArgsConstructor
+@Getter @Builder
 public class WorkBoardDto {
 
     private Long id;
