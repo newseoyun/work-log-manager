@@ -1,11 +1,11 @@
 <template>
   <v-app-bar
-    color="blue accent-4"
     dark
+    outlined
   >
     <v-app-bar-nav-icon @click="drawer = !drawer" />
 
-    <v-toolbar-title class="ml-3 white--text">{{ $route.name || `Main` }}</v-toolbar-title>
+    <v-toolbar-title class="ml-3 font-weight-bold">{{ $route.name || `MAIN` }}</v-toolbar-title>
 
     <v-spacer />
 
@@ -13,11 +13,11 @@
       <v-icon>mdi-magnify</v-icon>
     </v-btn>
 
-    <v-btn icon>
+    <v-btn icon class="ml-2">
       <v-icon>mdi-filter</v-icon>
     </v-btn>
 
-    <v-btn icon>
+    <v-btn icon class="ml-2">
       <v-icon>mdi-dots-vertical</v-icon>
     </v-btn>
   </v-app-bar>
@@ -26,12 +26,9 @@
     v-model="drawer"
     app
     absolute
-    bottom
-    temporary
   >
     <v-list
       nav
-      dense
     >
       <v-list-item-group
         v-model="links"

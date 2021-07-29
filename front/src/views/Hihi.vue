@@ -1,7 +1,7 @@
 <template>
-  <div>
-    hihi~
-  </div>
+<v-container>
+  <h1>hihi</h1>
+</v-container>
 </template>
 <script>
 
