@@ -6,6 +6,7 @@ export default createStore({
     links: [
       { title: 'Main', icon: 'mdi-view-dashboard', to: '/' },
       { title: 'hihi', icon: 'mdi-view-dashboard', to: '/hihi' },
+      { title: 'data', icon: 'mdi-view-dashboard', to: '/data' },
     ]
 
   },

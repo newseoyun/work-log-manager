@@ -13,6 +13,13 @@ const routes = [
         component: () => import(
           '@/views/Hihi'
         )
+      },
+      {
+        path: '/data',
+        name: 'data',
+        component: () => import(
+          '@/views/Data'
+        )
       }
     ]
   },

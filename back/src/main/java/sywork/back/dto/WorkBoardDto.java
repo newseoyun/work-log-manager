@@ -3,6 +3,7 @@ package sywork.back.dto;
 import lombok.*;
 
 @Getter @Builder
+@AllArgsConstructor
 public class WorkBoardDto {
 
     private Long id;
