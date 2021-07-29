@@ -1,13 +1,14 @@
 <template>
-  <v-container>
   <div>
     hihi~
   </div>
-  </v-container>
 </template>
 <script>
-export default {
 
+export default {
+  name: 'Hihi',
+  components: {
+  },
 }
 </script>
 <style lang="">
