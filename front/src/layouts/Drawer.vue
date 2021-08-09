@@ -33,7 +33,6 @@
       <v-list-item-group
         v-model="links"
         class=" text--accent-4"
-        @click="drawer = !drawer"
       >
       <template v-for="(item, index) in links" :key="index">
         <v-list-item
