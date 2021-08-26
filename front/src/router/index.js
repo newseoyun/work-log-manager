@@ -8,6 +8,13 @@ const routes = [
     component: MainLayout,
     children: [
       {
+        path: '/',
+        name: 'Main',
+        component: () => import(
+          '@/views/Hihi'
+        )
+      },
+      {
         path: '/hihi',
         name: 'hihi',
         component: () => import(
